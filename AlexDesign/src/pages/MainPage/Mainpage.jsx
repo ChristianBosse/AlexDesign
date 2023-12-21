@@ -5,6 +5,9 @@ import "./Mainpage.css";
 import FloatingGuy from "../../assets/floating_guy.png";
 import FloatingOrb from "../../assets/floating_orb.png";
 import floatingCloud from "../../assets/floating_cloud.png";
+import AD from "../../assets/AD.png";
+import ATL from "../../assets/ATL.png";
+import VilleEdm from "../../assets/VilleEDM.png";
 
 const Mainpage = () => {
     return (
@@ -63,7 +66,55 @@ const Mainpage = () => {
                     }}
                 />
             </div>
-            <section className="brand"></section>
+            <section className="brand">
+                <div className="brandContainer">
+                    <div className="brandWrapper">
+                        <div>
+                            <div className="kumbh-extrabold text-light brand-stroke">
+                                BRAND
+                            </div>
+                            <p
+                                style={{
+                                    fontSize: "42px",
+                                    position: "relative",
+                                    top: "-125px",
+                                    left: "35px",
+                                }}
+                                className="inter-bold text-light"
+                            >
+                                Companies I've Worked
+                                <br /> With...
+                            </p>
+                        </div>
+                        <div>
+                            <p
+                                style={{
+                                    position: "relative",
+                                    top: "-40px",
+                                    lineHeight: "2",
+                                }}
+                                className="inter-light text-light"
+                            >
+                                In the course of the past four years, I've had
+                                the privilege of
+                                <br /> working with a diverse range of
+                                companies, contributing my
+                                <br /> skills and expertise to various projects.
+                                Below is a snapshot of
+                                <br /> some of the notable organizations I've
+                                collaborated with:
+                            </p>
+                        </div>
+                    </div>
+                    <hr className="line" />
+                    <div className="BrandImageWrapper">
+                        <img src={AD} alt="AD Entreprise" />
+                        <img src={ATL} alt="ATL Design" />
+                        <img src={VilleEdm} alt="Ville d'Edmundston" />
+                        <img src={AD} alt="Police Edmundston" />
+                    </div>
+                </div>
+            </section>
         </>
     );
 };
