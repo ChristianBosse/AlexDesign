@@ -8,6 +8,7 @@ import floatingCloud from "../../assets/floating_cloud.png";
 import AD from "../../assets/AD.png";
 import ATL from "../../assets/ATL.png";
 import VilleEdm from "../../assets/VilleEDM.png";
+import logoPolice from "../../assets/logo_police.png";
 
 const Mainpage = () => {
     return (
@@ -108,10 +109,30 @@ const Mainpage = () => {
                     </div>
                     <hr className="line" />
                     <div className="BrandImageWrapper">
-                        <img src={AD} alt="AD Entreprise" />
-                        <img src={ATL} alt="ATL Design" />
-                        <img src={VilleEdm} alt="Ville d'Edmundston" />
-                        <img src={AD} alt="Police Edmundston" />
+                        <img
+                            width="80px"
+                            height="66px"
+                            src={AD}
+                            alt="AD Entreprise"
+                        />
+                        <img
+                            width="80px"
+                            height="66px"
+                            src={ATL}
+                            alt="ATL Design"
+                        />
+                        <img
+                            width="80px"
+                            height="66px"
+                            src={VilleEdm}
+                            alt="Ville d'Edmundston"
+                        />
+                        <img
+                            width="80px"
+                            height="66px"
+                            src={logoPolice}
+                            alt="Police Edmundston"
+                        />
                     </div>
                 </div>
             </section>
