@@ -1,0 +1,81 @@
+body {
+    background: linear-gradient(to right, #000a1f, #000c2f);
+}
+
+.background {
+    width: 99vw;
+    height: 60vh;
+    z-index: 0;
+    background-size: 60px 60px;
+    background-image: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.1) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.1) 1px,
+            transparent 1px
+        );
+}
+
+.wave {
+    position: relative;
+    z-index: 1;
+    top: -150px;
+    height: 100px;
+}
+
+.Wrapper {
+    margin-top: 3%;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.textWrapper {
+    position: relative;
+    top: 100px;
+}
+
+.moveSpace {
+    animation-name: spacemove;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-duration: 1.5s;
+}
+
+@keyframes spacemove {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(20px);
+    }
+}
+
+.moveCloud {
+    animation-name: cloudmove;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-duration: 10s;
+}
+
+@keyframes cloudmove {
+    from {
+        transform: translateX(0px);
+    }
+    to {
+        transform: translateX(100px);
+    }
+}
+
+.clouds {
+    position: absolute;
+    top: -160px;
+    left: -1000px;
+}
