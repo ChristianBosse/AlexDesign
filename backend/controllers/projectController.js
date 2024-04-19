@@ -1,5 +1,6 @@
 const projectModel = require("../models/projectModel");
 const cloudinary = require("../config/cloudinaryConfig");
+const fs = require("fs");
 
 const getAllProjects = (req, res) => {
     projectModel.getProjects((err, results) => {
@@ -29,45 +30,57 @@ const uploadImage = async file => {
     }
 };
 
-// Function to add images to a project
-const addImagesToProject = async (req, res) => {
+// Add project
+const addProject = async (req, res) => {
+    const { name, description } = req.body;
+
+    console.log(name);
+
+    // Ensure files were uploaded
+    if (!req.files) {
+        return res.status(400).json({ error: "No files uploaded" });
+    }
+
+    // Array to store Cloudinary image URLs
+    const imageUrls = [];
+
     try {
-        const projectId = req.params.id;
-        const files = req.files; // Assuming you're using a middleware like `multer` for file uploads
-
-        // Upload each image to Cloudinary and store the URL in the database
-        for (const file of files) {
+        // Upload each file to Cloudinary
+        for (const file of req.files) {
             const result = await cloudinary.uploader.upload(file.path);
-            await projectModel.addImageToProject(projectId, result.url);
+            imageUrls.push(result.secure_url);
         }
-
-        res.status(201).json({ message: "Images added successfully" });
+        // Once uploaded to Cloudinary, remove temporary files
+        req.files.forEach(file => {
+            fs.unlinkSync(file.path);
+        });
+        // Add project to the database
+        projectModel.addProject(name, description, imageUrls, (err, result) => {
+            if (err) {
+                return res.status(500).json({ error: "Error adding project" });
+            }
+            res.json({ message: "Project added successfully" });
+        });
     } catch (error) {
-        res.status(500).json({ error: "Error adding images" });
+        console.error("Error uploading files or adding project:", error);
+        res.status(500).json({ error: "Error adding project" });
     }
 };
 
-// Function to add texts to a project
-const addTextsToProject = async (req, res) => {
-    try {
-        const projectId = req.params.id;
-        const texts = req.body.texts;
-
-        // Add each text to the database
-        for (const text of texts) {
-            await projectModel.addTextToProject(projectId, text);
+const deleteProject = (req, res) => {
+    const { id } = req.params;
+    projectModel.deleteProject(id, (err, result) => {
+        if (err) {
+            return res.status(500).json({ error: "Error deleting project" });
         }
-
-        res.status(201).json({ message: "Texts added successfully" });
-    } catch (error) {
-        res.status(500).json({ error: "Error adding texts" });
-    }
+        res.json(result);
+    });
 };
 
 module.exports = {
     getAllProjects,
     getProjectById,
     uploadImage,
-    addImagesToProject,
-    addTextsToProject,
+    addProject,
+    deleteProject,
 };

@@ -13,7 +13,7 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 
 // Use project routes
-app.use("/api/projects", authMiddleware, projectRoutes);
+app.use("/api", authMiddleware, projectRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 5000;
