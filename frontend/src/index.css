@@ -1,10 +1,6 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@900&display=swap");
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 html,
 body,
@@ -129,34 +125,4 @@ q:after {
 table {
     border-collapse: collapse;
     border-spacing: 0;
-}
-
-.inter-light {
-    font-family: "Inter", sans-serif;
-    font-weight: 300;
-}
-
-.inter-regular {
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
-}
-
-.inter-medium {
-    font-family: "Inter", sans-serif;
-    font-weight: 500;
-}
-
-.inter-bold {
-    font-family: "Inter", sans-serif;
-    font-weight: 700;
-}
-
-.inter-extrabold {
-    font-family: "Inter", sans-serif;
-    font-weight: 800;
-}
-
-.kumbh-extrabold {
-    font-family: "Kumbh Sans", sans-serif;
-    font-weight: 900;
 }
